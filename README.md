@@ -1,68 +1,36 @@
-# Dynamic Island Generator 🏝️
+# Dynamic Island Generator
 
-## Author: Sreeram Kondapalli
+A C++ procedural terrain generator based on randomized particle deposition. Particles move across a grid to form a height map, which is normalized and rendered as a colored island in the terminal.
 
-## Description
+## Preview
 
-This project, Dynamic Island Generator, aims to simulate the dynamic creation of islands through randomized particle drops. By utilizing dynamic arrays and applying various algorithms, it generates an island landscape based on user inputs such as grid size, drop-zone coordinates, number of particles, and more. The islands are represented in different stages - raw, normalized, and a polished final version, all visualized through colorful terminal outputs and saved into text files.
+![Generated island terrain](images/Final%20Island.png)
 
----
+[Raw height map](images/Raw%20Island.png) · [Normalized height map](images/Normalized%20Island.png)
 
-## Screenshots
+## Build and run
 
-### Raw Island
+From the repository root:
 
-Here is the representation of the raw island, showing the initial state of particle drops.
+```bash
+g++ -std=c++11 main.cpp -o island_generator
+./island_generator
+```
 
-![Raw Island](images/Raw%20Island.png)
+For repeatable generation, pass a nonzero seed:
 
-### Normalized Island
+```bash
+./island_generator -s 42
+```
 
-The normalized version of the island after applying certain algorithms for a more structured appearance.
+The program prompts for grid width and height, drop-zone coordinates and radius, particle count, particle lifetime, and waterline. Keep the circular drop zone inside the grid, use a positive particle count, and follow the displayed parameter ranges.
 
-![Normalized Island](images/Normalized%20Island.png)
+Raw, normalized, and terrain views appear in the terminal. `Island.txt` contains the normalized height map and final character map.
 
-### Final Island
+## Files
 
-The final polished representation of the island, showcasing a vivid and colorful display.
+- [main.cpp](main.cpp): particle simulation, normalization, and rendering.
+- [termcolor.hpp](termcolor.hpp): bundled terminal-color library.
+- [images/](images/): example outputs.
 
-![Final Island](images/Final%20Island.png)
-
----
-
-## How to Run
-
-1. Clone this repository to your local machine.
-2. Navigate to the project directory in the terminal.
-3. Compile the project by typing `g++ -o island_generator main.cpp` and pressing enter.
-4. Run the project by typing `./island_generator` and follow the on-screen instructions.
-
----
-
-## Customization
-
-Users can customize various parameters of the island generation such as:
-
-- Grid Width and Height
-- Drop-zone coordinates
-- Number of particles to drop
-- Maximum life of particles
-- Waterline value
-
----
-
-## Technologies Used
-
-- C++
-- Standard Template Library (STL)
-
----
-
-## Acknowledgements
-
-Special thanks to the termcolor library for enabling colorful terminal outputs.
-
----
-
-Enjoy exploring your dynamically generated islands! 🌴
-
+**Author:** Sreeram Kondapalli
